@@ -59,6 +59,8 @@ td {
   border: none;
   border-bottom: 1px solid #ddd;
   padding: .5em;
+  max-width: 850px;
+  overflow-wrap: break-word;
 }
 """
 }

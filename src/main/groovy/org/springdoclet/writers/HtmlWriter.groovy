@@ -12,11 +12,11 @@ class HtmlWriter {
     def builder = new MarkupBuilder(new FileWriter(outputFile))
     builder.html {
       head {
-        title 'Spring Artifacts'
+        title config.docTitle
         link(rel: 'stylesheet', type: 'text/css', href: config.styleSheet)
       }
       body {
-        h1 'Spring Artifacts'
+        h1 config.docTitle
         hr()
         for (collector in collectors) {
           collector.writeOutput builder, paths

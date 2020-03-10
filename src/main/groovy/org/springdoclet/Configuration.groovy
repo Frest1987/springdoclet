@@ -5,15 +5,16 @@ class Configuration {
   private static final String OPTION_FILENAME = '-f'
   private static final String OPTION_STYLESHEET = '-stylesheet'
   private static final String OPTION_LINKPATH = '-linkpath'
+  private static final String OPTION_DOC_TITLE = '-doctitle'
   private static final String DEFAULT_DIRECTORY = '.'
   private static final String DEFAULT_FILENAME = './spring-summary.html'
   private static final String DEFAULT_STYLESHEET = './spring-summary.css'
   private static final String DEFAULT_LINKPATH = './'
+  private static final String DEFAULT_DOC_TITLE = 'Spring Artifacts'
 
   // List of ignored options
   // TODO: Implement support for these since they are considered standard options
-  private static final Map IGNORED_OPTIONS = [ 
-    '-doctitle': 2,
+  private static final Map IGNORED_OPTIONS = [
     '-windowtitle': 2,
   ]
 
@@ -29,6 +30,10 @@ class Configuration {
 
   def getStyleSheet() {
     getOption(OPTION_STYLESHEET) ?: DEFAULT_STYLESHEET
+  }
+
+  def getDocTitle() {
+    getOption(OPTION_DOC_TITLE) ?: DEFAULT_DOC_TITLE
   }
 
   boolean isDefaultStyleSheet() {
@@ -56,6 +61,8 @@ class Configuration {
     } else if (option.equals(OPTION_STYLESHEET)) {
       return 2
     } else if (option.equals(OPTION_LINKPATH)) {
+      return 2
+    } else if (option.equals(OPTION_DOC_TITLE)) {
       return 2
     } else if (IGNORED_OPTIONS.containsKey(option)) {
       return IGNORED_OPTIONS[option]
