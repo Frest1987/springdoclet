@@ -4,12 +4,14 @@ import groovy.xml.MarkupBuilder
 import org.springdoclet.Configuration
 import org.springdoclet.PathBuilder
 
+import java.nio.charset.StandardCharsets
+
 class HtmlWriter {
   void writeOutput(List collectors, Configuration config) {
     File outputFile = getOutputFile(config.outputDirectory, config.outputFileName)
     PathBuilder paths = new PathBuilder(config.linkPath)
 
-    def builder = new MarkupBuilder(new FileWriter(outputFile))
+    def builder = new MarkupBuilder(new OutputStreamWriter(new FileOutputStream(outputFile), StandardCharsets.UTF_8))
     builder.html {
       head {
         title config.docTitle

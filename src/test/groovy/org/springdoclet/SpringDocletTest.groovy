@@ -17,7 +17,8 @@ class SpringDocletTest {
             "-subpackages", "org.springframework.samples.petclinic",
             "-d", "./sample",
             "-f", fileName,
-            "-linkpath", "../apidocs/"] as String[]
+            "-linkpath", "../apidocs/",
+            "-doctitle", "Doc title"] as String[]
     println "javadoc args=$args"
     Main.execute "docletTest", SpringDoclet.class.name, args
 
